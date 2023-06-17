@@ -2,10 +2,13 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import tripService from "../../services/trip.service";
 import TripDetail from "../../components/TripDetail/TripDetail";
+import { useNavigate } from "react-router-dom";
 
 function TripDetailPage() {
   const { id } = useParams();
   const [trip, setTrip] = useState(null);
+
+  const navigate = useNavigate();
 
   const getTrip = async () => {
     try {
@@ -20,6 +23,7 @@ function TripDetailPage() {
     try {
         await tripService.delete(id);
         getTrip();
+        navigate("/trips");
     } catch (error) {
         console.error(error);
     }

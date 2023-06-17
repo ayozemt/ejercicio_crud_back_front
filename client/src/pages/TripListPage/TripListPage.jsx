@@ -4,12 +4,9 @@ import tripService from "../../services/trip.service";
 import Trip from "../../components/Trip/Trip";
 import { Routes, Route } from "react-router-dom";
 import CreateTripForm from "../CreateTripForm/CreateTripForm";
-import { useNavigate } from "react-router-dom";
 
 function TripListPage() {
   const [trips, setTrips] = useState(null);
-
-  const navigate = useNavigate();
 
   useEffect(() => {
     getTrips();
@@ -28,7 +25,6 @@ function TripListPage() {
     try {
       await tripService.delete(id);
       getTrips();
-      navigate("/trips");
     } catch (error) {
       console.error(error);
     }

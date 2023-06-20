@@ -29,6 +29,12 @@ textarea {
   display: inline-block;
   margin: 10px;
 }
+
+.HomePage,
+.ProjectsPage {
+  padding: 20px;
+  min-height: 100vh;
+}
  
 .Navbar {
   background: #515f7d;
@@ -98,5 +104,35 @@ textarea {
 }
 
 img {
-  height: 200px;
+  height: 300px;
+}
+
+.light {
+  background-color: #efeded;
+}
+
+.dark {
+  background-color: #18191a;
+}
+
+.Navbar.light {
+  background-color: #ffffff;
+}
+
+.Navbar.dark {
+  background-color: #252526;
+}
+
+.light a,
+.light p,
+.light h1,
+.light h3 {
+  color: #000000;
+}
+
+.dark a,
+.dark p,
+.dark h1,
+.dark h3 {
+  color: #ffffff;
 }

@@ -3,8 +3,11 @@ import { useParams } from "react-router-dom";
 import tripService from "../../services/trip.service";
 import TripDetail from "../../components/TripDetail/TripDetail";
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { ThemeContext } from "../../context/theme.context";
 
 function TripDetailPage() {
+  const { theme } = useContext(ThemeContext);
   const { id } = useParams();
   const [trip, setTrip] = useState(null);
 
@@ -34,9 +37,9 @@ function TripDetailPage() {
   }, [id]);
 
   return (
-    <div>
+    <div className={"Homepage " + theme}>
       <h1>Trip Detail</h1>
-      {trip ? <TripDetail {...trip} getTrip={getTrip} deleteTrip={deleteTrip}/> : <p>Loading...</p>}
+      {trip ? <TripDetail {...trip} getTrip={getTrip} deleteTrip={deleteTrip} id={id}/> : <p>Loading...</p>}
     </div>
   );
 }

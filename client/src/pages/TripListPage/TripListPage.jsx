@@ -4,9 +4,12 @@ import tripService from "../../services/trip.service";
 import Trip from "../../components/Trip/Trip";
 import { Routes, Route } from "react-router-dom";
 import CreateTripForm from "../CreateTripForm/CreateTripForm";
+import { useContext } from "react";
+import { ThemeContext } from "../../context/theme.context";
 
 function TripListPage() {
   const [trips, setTrips] = useState(null);
+  const { theme } = useContext(ThemeContext);
 
   useEffect(() => {
     getTrips();
@@ -37,7 +40,7 @@ function TripListPage() {
   };
 
   return (
-    <div className="TripListPage">
+    <div className={"ProjectsPage " + theme}>
       <h1>Trips</h1>
       <Routes>
         <Route path="/trips/new" element={<CreateTripForm getTrips={getTrips} />} />
@@ -45,7 +48,7 @@ function TripListPage() {
       <Link to="/trips/new" className="btn btn-primary">
         Add Trip
       </Link>
-      <div className="row">{trips && renderTrips()}</div>
+      <div className="d-flex flex-wrap">{trips && renderTrips()}</div>
     </div>
   );
 }

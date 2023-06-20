@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import tripService from "../../services/trip.service";
+import { useParams } from "react-router-dom";
 
-function EditTripForm({
-  trip: { title, country, tripImg, startDate, endDate, budget, _id },
-  getTrip,
-}) {
+function EditTripForm({ title, country, tripImg, startDate, endDate, budget, getTrip }) {
+  const { id } = useParams();
+
   const [data, setData] = useState({
     title,
     country,
@@ -13,6 +13,7 @@ function EditTripForm({
     startDate,
     endDate,
     budget,
+    id
   });
 
   const navigate = useNavigate();
@@ -24,9 +25,9 @@ function EditTripForm({
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      await tripService.edit(_id, data);
+      await tripService.edit(id, data);
       getTrip();
-      navigate(`/trips/${_id}`);
+      navigate(`/trips/${id}`);
     } catch (error) {
       console.error(error);
     }

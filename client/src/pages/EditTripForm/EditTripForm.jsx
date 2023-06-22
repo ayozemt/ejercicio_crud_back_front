@@ -12,8 +12,7 @@ function EditTripForm({ title, country, tripImg, startDate, endDate, budget, get
     tripImg,
     startDate,
     endDate,
-    budget,
-    id
+    budget
   });
 
   const navigate = useNavigate();
@@ -47,7 +46,8 @@ function EditTripForm({ title, country, tripImg, startDate, endDate, budget, get
             className="form-control"
             id="title"
             name="title"
-            value={data.title}
+            value={title}
+            placeholder={title}
           />
 
           <label htmlFor="country" className="form-label">
@@ -59,7 +59,7 @@ function EditTripForm({ title, country, tripImg, startDate, endDate, budget, get
             className="form-control"
             id="country"
             name="country"
-            value={data.country}
+            value={country}
           />
 
           <label htmlFor="tripImg" className="form-label">
@@ -71,7 +71,7 @@ function EditTripForm({ title, country, tripImg, startDate, endDate, budget, get
             className="form-control"
             id="tripImg"
             name="tripImg"
-            value={data.tripImg}
+            value={tripImg}
           />
 
           <label htmlFor="startDate" className="form-label">
@@ -83,7 +83,7 @@ function EditTripForm({ title, country, tripImg, startDate, endDate, budget, get
             className="form-control"
             id="startDate"
             name="startDate"
-            value={data.startDate}
+            value={startDate}
           />
 
           <label htmlFor="endDate" className="form-label">
@@ -95,7 +95,7 @@ function EditTripForm({ title, country, tripImg, startDate, endDate, budget, get
             className="form-control"
             id="endDate"
             name="endDate"
-            value={data.endDate}
+            value={endDate}
           />
 
           <label htmlFor="budget" className="form-label">
@@ -107,7 +107,7 @@ function EditTripForm({ title, country, tripImg, startDate, endDate, budget, get
             className="form-control"
             id="budget"
             name="budget"
-            value={data.budget}
+            value={budget}
           />
         </div>
         <button type="submit" className="btn btn-primary">

@@ -1,31 +1,33 @@
 import axios from "axios";
+const storedToken = localStorage.getItem("authToken");
 
 class TripService {
-    constructor() {
-        this.api = axios.create({
-            baseURL: "http://localhost:5005/api/trips"
-        });
-    }
+  constructor() {
+    this.api = axios.create({
+      baseURL: "http://localhost:5005/api/trips",
+      headers: { Authorization: `Bearer ${storedToken}` },
+    });
+  }
 
-    create(data) {
-        return this.api.post("/", data);
-    }
+  create(data) {
+    return this.api.post("/", data);
+  }
 
-    edit(id, data) {
-        return this.api.put(`/${id}`, data);
-    }
+  edit(id, data) {
+    return this.api.put(`/${id}`, data);
+  }
 
-    delete(id) {
-        return this.api.delete(`/${id}`);
-    }
+  delete(id) {
+    return this.api.delete(`/${id}`);
+  }
 
-    getAll() {
-        return this.api.get("/");
-    }
+  getAll() {
+    return this.api.get("/");
+  }
 
-    getOne(id) {
-        return this.api.get(`/${id}`);
-    }
+  getOne(id) {
+    return this.api.get(`/${id}`);
+  }
 }
 
 const tripService = new TripService();

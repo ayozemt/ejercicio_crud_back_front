@@ -1,11 +1,20 @@
 import axios from "axios";
-const storedToken = localStorage.getItem("authToken");
 
 class TripService {
   constructor() {
     this.api = axios.create({
       baseURL: "http://localhost:5005/api/trips",
-      headers: { Authorization: `Bearer ${storedToken}` },
+    });
+
+    this.api.interceptors.response.use((config) => {
+      const storedToken = localStorage.getItem("authToken");
+
+      if (storedToken) {
+        config.headers = {
+          Authorization: `Bearer ${storedToken}`,
+        };
+      }
+      return config;
     });
   }
 

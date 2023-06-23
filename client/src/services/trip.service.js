@@ -6,7 +6,7 @@ class TripService {
       baseURL: "http://localhost:5005/api/trips",
     });
 
-    this.api.interceptors.response.use((config) => {
+    this.api.interceptors.request.use((config) => {
       const storedToken = localStorage.getItem("authToken");
 
       if (storedToken) {
